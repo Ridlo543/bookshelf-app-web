@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="bookshelf apps web that can Add and delete Book Data, 
+    bookshelf data that have been read and books that have not been read.
+    "
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bookself Apps</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="head_bar">
+      <h1 class="head_bar__title">Bookshelf Apps</h1>
+    </header>
+    <main>
+      <div class="wrapper">
+        <div class="row">
+          <section class="input_section card">
+            <h2>Input Buku</h2>
+            <form id="inputBook">
+              <div class="input">
+                <input id="Title" type="text" required />
+                <div class="underline"></div>
+                <label for="Title">Judul</label>
+              </div>
+              <div class="input">
+                <input id="Author" type="text" required />
+                <div class="underline"></div>
+                <label for="Author">Penulis</label>
+              </div>
+              <div class="input">
+                <input id="Year" type="number" required />
+                <div class="underline"></div>
+                <label for="Year">Tahun</label>
+              </div>
+              <div class="input_inline">
+                <input id="IsComplete" type="checkbox" />
+                <label for="IsComplete">Selesai Dibaca</label>
+              </div>
+              <button id="bookSubmit" type="submit" class="submit green">
+                Simpan
+              </button>
+            </form>
+          </section>
+
+          <section class="search_section card">
+            <h2>Cari Buku</h2>
+            <form id="searchBook">
+              <div class="input">
+                <input id="searchBookTitle" type="text" required />
+                <div class="underline"></div>
+                <label for="searchBookTitle">Judul</label>
+              </div>
+              <button id="searchSubmit" type="submit" class="submit green">
+                Cari
+              </button>
+              <button id="resetSubmit" type="submit" class="reset green">
+                Reset
+              </button>
+            </form>
+            <div id="searchBookshelfList" class="book_list"></div>
+          </section>
+        </div>
+        <div class="row">
+          <section class="book_shelf card">
+            <h2>Belum Selesai Dibaca</h2>
+
+            <div id="incompleteBookshelfList" class="book_list">
+              <!--      <article class="book_item">-->
+              <!--        <h3>Book Title</h3>-->
+              <!--        <p>Penulis: </p>-->
+              <!--        <p>Tahun: </p>-->
+              <!--    -->
+              <!--        <div class="action">-->
+              <!--          <button class="green">Selesai dibaca</button>-->
+              <!--          <button class="blue">Edit buku</button>-->
+              <!--          <button class="red">Hapus buku</button>-->
+              <!--        </div>-->
+              <!--      </article>-->
+            </div>
+          </section>
+
+          <section class="book_shelf card">
+            <h2>Selesai Dibaca</h2>
+
+            <div id="completeBookshelfList" class="book_list">
+              <!--      <article class="book_item">-->
+              <!--        <h3>Book Title</h3>-->
+              <!--        <p>Penulis: </p>-->
+              <!--        <p>Tahun: </p>-->
+              <!--        -->
+              <!--        <div class="action">-->
+              <!--          <button class="green">Belum selesai di Baca</button>-->
+              <!--          <button class="blue">Edit buku</button>-->
+              <!--          <button class="red">Hapus buku</button>-->
+              <!--        </div>-->
+              <!--      </article>-->
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
