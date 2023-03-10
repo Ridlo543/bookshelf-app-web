@@ -25,7 +25,7 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 .head_bar__title {
