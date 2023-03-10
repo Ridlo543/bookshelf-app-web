@@ -1,5 +1,46 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const searchBook = document.getElementById("searchBook");
+  const searchBookTitle = document.getElementById("searchBookTitle");
+  const resetButton = document.getElementById("resetSubmit");
+  const searchBookshelfList = document.getElementById("searchBookshelfList");
+  const inputBook = document.getElementById("inputBook");
+  const incompleteBookshelfList = document.getElementById(
+    "incompleteBookshelfList"
+  );
+  const completeBookshelfList = document.getElementById(
+    "completeBookshelfList"
+  );
+
   let books = getBooksFromStorage();
+  render();
+
+  function render() {
+    incompleteBookshelfList.innerHTML = "";
+    completeBookshelfList.innerHTML = "";
+    books.forEach((book) => {
+      const bookElement = makeBookElement(book);
+      if (book.isComplete) {
+        completeBookshelfList.append(bookElement);
+      } else {
+        incompleteBookshelfList.append(bookElement);
+      }
+    });
+  }
+
+  function getBooksFromStorage() {
+    let books;
+    const booksStorage = localStorage.getItem("booksStorage");
+    if (booksStorage) {
+      books = JSON.parse(booksStorage);
+    } else {
+      books = [];
+    }
+    return books;
+  }
+
+  function saveBooksToStorage(books) {
+    localStorage.setItem("booksStorage", JSON.stringify(books));
+  }
 
   function makeBookElement(book) {
     const bookItem = document.createElement("article");
@@ -40,14 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return bookItem;
   }
-
-  const inputBook = document.getElementById("inputBook");
-  const incompleteBookshelfList = document.getElementById(
-    "incompleteBookshelfList"
-  );
-  const completeBookshelfList = document.getElementById(
-    "completeBookshelfList"
-  );
 
   inputBook.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -127,11 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
   incompleteBookshelfList.addEventListener("click", handleBookshelfClick);
   completeBookshelfList.addEventListener("click", handleBookshelfClick);
 
-  const searchBook = document.getElementById("searchBook");
-  const searchBookTitle = document.getElementById("searchBookTitle");
-  const resetButton = document.getElementById("resetSubmit");
-  const searchBookshelfList = document.getElementById("searchBookshelfList");
-
   searchBook.addEventListener("submit", (event) => {
     event.preventDefault();
     const keyword = document
@@ -197,31 +225,5 @@ document.addEventListener("DOMContentLoaded", function () {
       const bookElement = makeBookElement(book);
       searchBookshelfList.append(bookElement);
     });
-  }
-
-  function render(booksList = books) {
-    incompleteBookshelfList.innerHTML = "";
-    completeBookshelfList.innerHTML = "";
-    booksList.forEach((book) => {
-      const bookElement = makeBookElement(book);
-      book.isComplete
-        ? completeBookshelfList.append(bookElement)
-        : incompleteBookshelfList.append(bookElement);
-    });
-  }
-
-  function getBooksFromStorage() {
-    let books;
-    const booksStorage = localStorage.getItem("booksStorage");
-    if (booksStorage) {
-      books = JSON.parse(booksStorage);
-    } else {
-      books = [];
-    }
-    return books;
-  }
-
-  function saveBooksToStorage(books) {
-    localStorage.setItem("booksStorage", JSON.stringify(books));
   }
 });
