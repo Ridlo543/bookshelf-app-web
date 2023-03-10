@@ -200,6 +200,14 @@ document.addEventListener("DOMContentLoaded", function () {
     searchBookshelfList.innerHTML = "";
   });
 
+  function renderSearchResult(booksList) {
+    searchBookshelfList.innerHTML = "";
+    booksList.forEach((book) => {
+      const bookElement = makeBookElement(book);
+      searchBookshelfList.append(bookElement);
+    });
+  }
+
   function alertDialog(message, duration = 3000) {
     const dialog = document.createElement("div");
     dialog.classList.add("dialog");
@@ -217,13 +225,5 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       dialog.remove();
     }, duration);
-  }
-
-  function renderSearchResult(booksList) {
-    searchBookshelfList.innerHTML = "";
-    booksList.forEach((book) => {
-      const bookElement = makeBookElement(book);
-      searchBookshelfList.append(bookElement);
-    });
   }
 });
